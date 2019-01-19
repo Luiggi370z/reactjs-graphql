@@ -1,16 +1,25 @@
-import React from 'react'
 import Link from 'next/link'
+import NavStyles from './styles/NavStyles'
 
 const Nav = () => {
 	return (
-		<div>
-			<Link href='/sell'>
+		<NavStyles>
+			<Link href='items'>
+				<a>Items</a>
+			</Link>
+			<Link href='sell'>
 				<a>Sell</a>
 			</Link>
-			<Link href='/'>
-				<a>Home</a>
+			<Link href='signup'>
+				<a>Signup</a>
 			</Link>
-		</div>
+			<Link href='orders'>
+				<a>Orders</a>
+			</Link>
+			<Link href='me'>
+				<a>Account</a>
+			</Link>
+		</NavStyles>
 	)
 }
 
