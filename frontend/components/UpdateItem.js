@@ -1,10 +1,8 @@
 import React, { Component } from 'react'
 import { Mutation, Query } from 'react-apollo'
-import Router from 'next/router'
 import gql from 'graphql-tag'
 import Form from './styles/Form'
 import Error from './ErrorMessage'
-import formatMoney from '../lib/formatMoney'
 
 const SINGLE_ITEM_QUERY = gql`
 	query SINGLE_ITEM_QUERY($id: ID!) {
