@@ -1,6 +1,7 @@
 // If query is the same as the generated one in prisma.graphql
 // then we can forward it directly (no filter, auth or any other logic)
 const { forwardTo } = require('prisma-binding')
+const { hasPermission } = require('../utils')
 
 const Query = {
 	items: forwardTo('db'),
@@ -15,11 +16,14 @@ const Query = {
 			},
 			info
 		)
+	},
+	async users(parent, args, ctx, info) {
+		if (!ctx.request.userId) throw new Error('You must be logged in!')
+
+		hasPermission(ctx.request.user, ['ADMIN', 'PERMISSIONUPDATE'])
+
+		return ctx.db.query.users({}, info)
 	}
-	// async items(parent, args, ctx, info) {
-	// 	const items = await ctx.db.query.items()
-	// 	return items
-	// }
 }
 
 module.exports = Query
