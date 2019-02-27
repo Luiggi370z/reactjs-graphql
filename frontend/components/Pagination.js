@@ -18,7 +18,7 @@ const PAGINATION_QUERY = gql`
 
 const Pagination = props => {
 	return (
-		<Query query={PAGINATION_QUERY}>
+		<Query query={PAGINATION_QUERY} data-test='pagination'>
 			{({ data, loading, error }) => {
 				if (loading) return <p>Loading...</p>
 				const count = data.itemsConnection.aggregate.count
@@ -43,7 +43,7 @@ const Pagination = props => {
 							</a>
 						</Link>
 						<p>
-							Page {page} of {pages}
+							Page {page} of <span className='totalPages'>{pages}</span>
 						</p>
 						<p>{count} Items total </p>
 						<Link
@@ -64,3 +64,4 @@ const Pagination = props => {
 }
 
 export default Pagination
+export { PAGINATION_QUERY }
