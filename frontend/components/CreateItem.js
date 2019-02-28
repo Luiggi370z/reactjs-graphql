@@ -28,8 +28,8 @@ const CREATE_ITEM_MUTATION = gql`
 
 class CreateItem extends Component {
 	state = {
-		title: 'aaaa',
-		description: 'bbbbbb',
+		title: '',
+		description: '',
 		image: '',
 		largeImage: '',
 		price: 0
